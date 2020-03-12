@@ -9,6 +9,7 @@ src/.next
 
 # testing
 /coverage
+.next
 
 # production
 /build

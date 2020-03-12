@@ -22,9 +22,9 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "next src",
+    "build": "next build src",
+    "start": "next start src"
   },
   "eslintConfig": {
     "extends": "react-app"

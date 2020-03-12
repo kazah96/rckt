@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import style from "./style.module.css";
 
-import { PhotoContext } from "../../contexts/photo";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 import { searchPhoto } from "../../api/unsplash";
 import PhotoPanel from "../../components/photo-panel";
