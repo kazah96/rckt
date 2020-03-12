@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import SearchBar from "../../components/search-bar";
-import Link from "next/link";
 
 import style from "./style.module.css";
 
@@ -26,7 +25,7 @@ function SearchPage() {
         <div className={style.dividerContainer}>
           <Divider />
         </div>
-        <HorizontalWordScroll />
+        <HorizontalWordScroll onWordClick={searchImages} />
       </div>
       <PhotoPanel photos={photos} />
     </React.Fragment>
