@@ -16,6 +16,11 @@
   margin: 0 20px;
 }
 
+.layoutIcon {
+ width: 23px;
+ height: 23px;
+}
+
 .active {
   fill: #000000;
 }

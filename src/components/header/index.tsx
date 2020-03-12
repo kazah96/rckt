@@ -19,19 +19,19 @@ const Header: FC<Props> = props => {
         <Link href="/search">
           <a className={style.link}>
             <SearchIcon />
-            Поиск
+            <span>Поиск</span>
           </a>
         </Link>
         <Link href="/favorites">
           <a className={style.link}>
             <LikeIcon />
-            Избранное
+            <span>Избранное</span>
           </a>
         </Link>
         <Link href="/sdf">
           <a className={style.link}>
             <HistoryIcon />
-            История поиска
+            <span>История поиска</span>
           </a>
         </Link>
       </div>
