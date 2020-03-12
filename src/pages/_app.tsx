@@ -5,17 +5,15 @@ import { BaseContextProvider } from "../contexts/baseContextProvider";
 import Header from "../components/header";
 
 import "./global.style.css";
-import { getAuthenticationUrl } from "../api/unsplash";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <React.Fragment>
       <Header />
-      {/* <a href={getAuthenticationUrl()}> LOGIN</a> */}
       <BaseContextProvider>
         <Component {...pageProps} />
       </BaseContextProvider>
-    </div>
+    </React.Fragment>
   );
 }
 

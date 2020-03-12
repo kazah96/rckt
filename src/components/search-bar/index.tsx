@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect, useContext, useCallback } from "react";
+import cn from 'classnames'
 
 //@ts-ignore
 import throttle from "lodash/throttle";
@@ -62,16 +63,14 @@ class SearchBar extends React.Component<Props> {
     const { value } = this.state;
 
     return (
-      <div className={style.div}>
-        <input
-          className={style.input}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onChange={this.onChange}
-          placeholder={this.state.placeholder}
-          value={value}
-        />
-      </div>
+      <input
+        className={cn(style.input, 'heading1')}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onChange={this.onChange}
+        placeholder={this.state.placeholder}
+        value={value}
+      />
     );
   }
 }

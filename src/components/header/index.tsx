@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useContext, useCallback } from "react";
+import React, { FC } from "react";
 import Link from "next/link";
 
 import SearchIcon from "../../resourse/svg/search.svg";
@@ -10,8 +10,6 @@ import style from "./style.module.css";
 interface Props {}
 
 const Header: FC<Props> = props => {
-  // const [value, setValue] = useState<string>("");
-  // const photoContext = useContext(PhotoContext);
 
   return (
     <div className={style.header}>
@@ -28,7 +26,7 @@ const Header: FC<Props> = props => {
             <span>Избранное</span>
           </a>
         </Link>
-        <Link href="/sdf">
+        <Link href="/search-history">
           <a className={style.link}>
             <HistoryIcon />
             <span>История поиска</span>

@@ -8,7 +8,8 @@ import { searchPhoto } from "../../api/unsplash";
 import PhotoPanel from "../../components/photo-panel";
 import HorizontalWordScroll from "../../components/horizontal-word-scroll";
 
-import Divider from "../../components/divider";
+import Divider from "../../atoms/divider";
+import HeaderPanel from "../../atoms/header-panel";
 
 function SearchPage() {
   const [photos, setPhotos] = useState<Array<UnsplashApiPhoto>>([]);
@@ -20,13 +21,13 @@ function SearchPage() {
 
   return (
     <React.Fragment>
-      <div className={style.searchPanel}>
+      <HeaderPanel>
         <SearchBar onSearch={searchImages} />
         <div className={style.dividerContainer}>
           <Divider />
         </div>
         <HorizontalWordScroll onWordClick={searchImages} />
-      </div>
+      </HeaderPanel>
       <PhotoPanel photos={photos} />
     </React.Fragment>
   );

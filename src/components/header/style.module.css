@@ -1,10 +1,7 @@
 .header {
   background: var(--main-black);
-
   height: 80px;
-
   padding: 20px 20px;
-
   box-sizing: border-box;
 }
 
@@ -29,4 +26,34 @@
   display: flex;
   justify-content: right;
   margin: 0 20px;
+  height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .rightBar {
+    margin: 0;
+  }
+  
+  .header {
+    background: var(--main-black);
+    height: 80px;
+    padding: 8px 8px;
+    box-sizing: border-box;
+  }
+
+  .link  {
+    margin: 0 8px;
+  }
+  .link span {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .link svg {
+    width: 16px;
+    height: 16px;
+   
+  }
+  
 }

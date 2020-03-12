@@ -13,3 +13,20 @@ body {
   font-weight: 400;
   src: url("https://sf.abarba.me/SF-UI-Display-Regular.otf");
 }
+
+.heading1 {
+  font-size: 72px;
+}
+
+.heading2 {
+  font-size: 52px;
+}
+
+@media screen and (max-width: 600px) {
+  .heading1 {
+    font-size: 32px;
+  }
+  .heading2 {
+    font-size: 18px;
+  }
+}

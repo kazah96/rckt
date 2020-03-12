@@ -1,11 +1,11 @@
 .photoContainer .image {
-  width: 476px;
+  max-width: 476px;
   border-radius: 8px;
   transition: filter ease-in 0.15s;
 }
 
 .photoContainer {
-  width: 476px;
+  max-width: 476px;
   margin: 27px;
   display: inline-block;
   border-radius: 8px;

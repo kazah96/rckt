@@ -16,7 +16,7 @@ function Favorites() {
   return (
     <React.Fragment>
       <div className={style.header}>
-        <h1 className={style.heading}>Избранное</h1>
+        <h1 className='heading2'>Избранное</h1>
       </div>
       <PhotoPanel photos={photos} />
     </React.Fragment>
