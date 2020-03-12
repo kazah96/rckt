@@ -10,25 +10,16 @@
   display: inline-block;
   border-radius: 8px;
   position: relative;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.14);
+  /* box-shadow: 0px 0px 4px 14px rgba(0, 0, 0, 0.14); */
 }
 
 .photoContainer:hover .image {
-  filter: brightness(0.7) blur(2px);
+  filter: brightness(0.55) blur(1px);
 }
 
 .photoContainer:hover .overlayContainer {
   visibility: visible;
   opacity: 1;
-}
-
-.buttons {
-  top: 50px;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .avatar {
@@ -63,4 +54,37 @@
   color: var(--main-white);
   margin: 0;
   margin-bottom: 60px;
+}
+
+
+.buttons {
+  top: 50px;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons:hover svg {
+  fill: gray;
+}
+
+.button {
+  cursor: pointer;
+  width: 60px;
+  height: 45px;
+  text-align: center;
+}
+
+.button svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+  transition: all ease 0.4s;
+}
+
+.button:hover svg {
+  fill: white;
+  transform: scale(1.5);
 }

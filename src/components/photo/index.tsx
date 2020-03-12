@@ -31,9 +31,20 @@ const Photo: FC<Props> = ({ photo }) => {
         </h2>
         <h4>@{photo.user.instagram_username}</h4>
         <div className={style.buttons}>
-          <LikeIcon />
-          <MaximizeIcon />
-          <DownloadIcon />
+          <div className={style.button}>
+            <LikeIcon />
+          </div>
+          <a
+            href={photo.urls.full}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.button}
+          >
+            <MaximizeIcon />
+          </a>
+          <div className={style.button}>
+            <DownloadIcon />
+          </div>
         </div>
       </div>
     </div>

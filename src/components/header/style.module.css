@@ -16,6 +16,12 @@
   text-decoration: none;
 }
 
+.link svg {
+  width: 25px;
+  height: 25px;
+  fill:white;
+}
+
 .rightBar {
   display: flex;
   justify-content: right;
