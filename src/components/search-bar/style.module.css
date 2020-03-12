@@ -1,16 +1,8 @@
-.div {
-}
-
 .input {
   background: none;
-
   border: 0;
-  border-bottom: 1px solid white;
-
   font-size: 72px;
-
   text-align: center;
-
   color: var(--main-white);
 }
 
