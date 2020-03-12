@@ -24,7 +24,7 @@
   "scripts": {
     "dev": "next src",
     "build": "next build src",
-    "start": "next start src"
+    "start": "next start src -p $PORT"
   },
   "eslintConfig": {
     "extends": "react-app"
