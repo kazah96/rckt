@@ -1,0 +1,13 @@
+.container {
+  color: var(--main-white);
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+  line-height: 21px;
+  text-transform: capitalize;
+}
+
+.word {
+  font-size: 18px;
+  margin: 0 15px;
+}

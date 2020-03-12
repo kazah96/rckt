@@ -5,6 +5,7 @@ import throttle from "lodash/throttle";
 
 import style from "./style.module.css";
 import { PhotoContext } from "../../contexts/photo";
+import HorizontalWordScroll from "../horizontal-word-scroll";
 
 const search_throttle_interval = 500;
 
@@ -12,44 +13,67 @@ interface Props {
   onSearch: (query: string) => void;
 }
 
-const SearchBar: FC<Props> = props => {
-  const [value, setValue] = useState<string>("");
-  const photoContext = useContext(PhotoContext);
+const placeholder = "Поиск";
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+class SearchBar extends React.Component<Props> {
+  state = {
+    value: "",
+    placeholder
   };
 
-  const handleUserKeyPress = useCallback(
-    throttle((e: KeyboardEvent) => {
-      if (e.key === "Enter" && value !== "") {
-        props.onSearch(value);
-        photoContext.addQuery(value);
+  static contextType = PhotoContext;
 
-        setValue("");
-      }
-    }, search_throttle_interval),
-    [value]
-  );
+  componentDidMount() {
+    document.addEventListener("keypress", this.handleUserKeyPress);
+  }
 
-  useEffect(() => {
-    document.addEventListener("keydown", handleUserKeyPress);
+  componentWillUnmount() {
+    document.removeEventListener("keypress", this.handleUserKeyPress);
+  }
 
-    return () => {
-      document.removeEventListener("keydown", handleUserKeyPress);
-    };
-  }, [value]);
+  onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ value: e.target.value });
+  };
 
-  return (
-    <div className={style.div}>
-      <input
-        className={style.input}
-        placeholder="Поиск"
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-};
+  onFocus = () => {
+    this.setState({ placeholder: "" });
+  };
+
+  onBlur = () => {
+    this.setState({ placeholder });
+  };
+
+  handleUserKeyPress = throttle((e: KeyboardEvent) => {
+    const { addQuery } = this.context;
+    const { value } = this.state;
+    const { onSearch } = this.props;
+
+    if (e.key === "Enter" && value !== "") {
+      // console.log(photoContext)
+
+      onSearch(value);
+      addQuery(value);
+
+      this.setState({ value: "" });
+    }
+  }, search_throttle_interval);
+
+  render() {
+    const { value } = this.state;
+
+    return (
+      <div className={style.div}>
+        <input
+          className={style.input}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          placeholder={this.state.placeholder}
+          value={value}
+        />
+      </div>
+    );
+  }
+}
 
 export default SearchBar;

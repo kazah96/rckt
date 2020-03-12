@@ -1,0 +1,66 @@
+.photoContainer .image {
+  width: 476px;
+  border-radius: 8px;
+  transition: filter ease-in 0.15s;
+}
+
+.photoContainer {
+  width: 476px;
+  margin: 27px;
+  display: inline-block;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+.photoContainer:hover .image {
+  filter: brightness(0.7) blur(2px);
+}
+
+.photoContainer:hover .overlayContainer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.buttons {
+  top: 50px;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  border-radius: 8px;
+  border: 1px solid white;
+  width: 70px;
+  height: 70px;
+}
+
+.overlayContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity ease-in 0.1s;
+}
+
+.overlayContainer h2 {
+  font-size: 30px;
+  color: var(--main-white);
+  margin-bottom: 0;
+}
+.overlayContainer h4 {
+  font-size: 18px;
+  color: var(--main-white);
+  margin: 0;
+  margin-bottom: 60px;
+}

@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  line-height: 86px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+.heading {
+  font-size: 72px;
+}

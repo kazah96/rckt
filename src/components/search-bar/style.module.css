@@ -11,5 +11,20 @@
 
   text-align: center;
 
-  color: white;
+  color: var(--main-white);
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--main-white);
+}
+.input:-ms-input-placeholder {
+  color: var(--main-white);
+}
+.input::-moz-placeholder {
+  color: var(--main-white);
+  opacity: 1;
+}
+.input:-moz-placeholder {
+  color: var(--main-white);
+  opacity: 1;
 }

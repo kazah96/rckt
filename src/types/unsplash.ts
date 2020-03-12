@@ -21,7 +21,31 @@ export interface Urls {
   thumb: string;
 }
 
-export interface User {}
+export interface DifferentSizesImage {
+  small: string
+  medium: string
+  large: string
+}
+
+export interface User {
+  accepted_tos?: boolean;
+  bio: string;
+  first_name: string;
+  id: string;
+  instagram_username: string;
+  last_name: string;
+  // links: Object { self: "https://api.unsplash.com/users/albert_s", html: "https://unsplash.com/@albert_s", photos: "https://api.unsplash.com/users/albert_s/photos", … }
+  location?: string;
+  name: string;
+  portfolio_url?: string;
+  profile_image: DifferentSizesImage
+  total_collections: number;
+  total_likes: number;
+  total_photos: number;
+  twitter_username?: string;
+  updated_at: string;
+  username: string;
+}
 
 export interface UnsplashApiPhoto {
   alt_description: string;

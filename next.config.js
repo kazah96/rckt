@@ -14,7 +14,7 @@ if (result.error) {
 env = { ...env, ...process.env };
 
 if (!env.AUTH_PUBLIC_TOKEN) {
-  throw new Error(chalk.red("AUTH_PUBLIC_TOKEN not found in .env"));
+  throw new Error(chalk.red("AUTH_PUBLIC_TOKEN not found in enviroment vars. "));
 }
 
 module.exports = {

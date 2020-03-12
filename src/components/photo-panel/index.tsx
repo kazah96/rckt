@@ -1,11 +1,14 @@
 import React, { FC, useState, useEffect, useContext, useCallback } from "react";
 import cn from "classnames";
+import generate from 'shortid'
 
 import HorizontalIcon from "../../resourse/svg/layout-horizontal.svg";
 import GridIcon from "../../resourse/svg/layout-grid.svg";
 
 import style from "./style.module.css";
 import { UnsplashApiPhoto } from "../../types/unsplash";
+
+import Photo from '../photo'
 
 interface IconProps {
   currentSelectedIcon: Layout;
@@ -54,11 +57,7 @@ const PhotoPanel: FC<Props> = props => {
       <div className={layoutClassname}>
         {props.photos.map(photo => {
           return (
-            <img
-              className={style.image}
-              src={photo.urls.regular}
-              alt={photo.alt_description}
-            ></img>
+            <Photo key={generate()} photo={photo} />
           );
         })}
       </div>

@@ -22,7 +22,7 @@ const Header: FC<Props> = props => {
             Поиск
           </a>
         </Link>
-        <Link href="/sdf">
+        <Link href="/favorites">
           <a className={style.link}>
             <LikeIcon />
             Избранное
