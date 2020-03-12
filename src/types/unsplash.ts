@@ -23,7 +23,7 @@ export interface Urls {
 
 export interface User {}
 
-export interface UnsplashApiPhono {
+export interface UnsplashApiPhoto {
   alt_description: string;
   categories: Array<string>;
   color: string;
