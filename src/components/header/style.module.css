@@ -3,6 +3,7 @@
   height: 80px;
   padding: 20px 20px;
   box-sizing: border-box;
+  display: flex;
 }
 
 .link {
@@ -27,13 +28,14 @@
   justify-content: right;
   margin: 0 20px;
   height: 100%;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 700px) {
   .rightBar {
     margin: 0;
   }
-  
+
   .header {
     background: var(--main-black);
     height: 80px;
@@ -41,7 +43,7 @@
     box-sizing: border-box;
   }
 
-  .link  {
+  .link {
     margin: 0 8px;
   }
   .link span {
@@ -49,11 +51,36 @@
   }
 }
 
+.faceContainer {
+  flex: 1;
+  position: relative;
+  padding-left: 20px;
+}
+
+.face {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  fill: white;
+}
+
+.animate {
+  animation: face-rotate 1s ease-in-out infinite;
+}
+
 @media screen and (max-width: 600px) {
   .link svg {
     width: 16px;
     height: 16px;
-   
   }
-  
+}
+
+@keyframes face-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -4,15 +4,18 @@ import Link from "next/link";
 import SearchIcon from "../../resourse/svg/search.svg";
 import LikeIcon from "../../resourse/svg/like.svg";
 import HistoryIcon from "../../resourse/svg/history.svg";
+import Face from "./face";
 
 import style from "./style.module.css";
 
 // interface Props {}
 
 const Header: FC = () => {
-
   return (
     <div className={style.header}>
+      <div className={style.faceContainer}>
+        <Face />
+      </div>
       <div className={style.rightBar}>
         <Link href="/search">
           <a className={style.link}>
