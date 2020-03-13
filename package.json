@@ -29,6 +29,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-masonry-component": "^6.2.1",
+    "react-media": "^1.10.0",
     "shortid": "^2.2.15",
     "typescript": "^3.8.3"
   },

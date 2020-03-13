@@ -9,10 +9,12 @@ import "./global.style.css";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
-      <Header />
-      <BaseContextProvider>
-        <Component {...pageProps} />
-      </BaseContextProvider>
+      <div className="base-container">
+        <Header />
+        <BaseContextProvider>
+          <Component {...pageProps} />
+        </BaseContextProvider>
+      </div>
     </React.Fragment>
   );
 }

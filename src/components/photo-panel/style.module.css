@@ -38,18 +38,12 @@
   text-align: center;
 }
 
-
 @media screen and (max-width: 600px) {
   .layout {
-    width: 100vw;
+    width: 100%;
   }
-}
 
-
-.layout_horizontal .photoContainer .image {
-  max-width: 100%;
-}
-
-.layout_horizontal .image {
-  max-width: 100%;
+  .layoutIcons {
+    display: none;
+  }
 }

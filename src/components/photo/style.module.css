@@ -91,3 +91,13 @@
 .red svg {
   fill: red;
 }
+
+@media screen and (max-width: 600px) {
+  .photoContainer .image  {
+    border-radius: 0;
+  }
+
+  .photoContainer {
+    margin: 0;
+  }
+}

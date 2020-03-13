@@ -6,10 +6,13 @@ import HorizontalIcon from "../../resourse/svg/layout-horizontal.svg";
 import GridIcon from "../../resourse/svg/layout-grid.svg";
 import Masonry from "react-masonry-component";
 
+import Media from "react-media";
+
 import style from "./style.module.css";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 
 import Photo from "../photo";
+import MediaBreakpoints from "../../types/mediaBreakpoints";
 
 interface IconProps {
   currentSelectedIcon: Layout;
@@ -18,6 +21,7 @@ interface IconProps {
 
 interface Props {
   photos: Array<UnsplashApiPhoto>;
+  currentMedia: MediaBreakpoints;
 }
 
 enum Layout {
@@ -53,12 +57,18 @@ const PhotoPanel: FC<Props> = props => {
   });
 
   return (
-    <div className={style.panel} >
-      <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />
+    <div className={style.panel}>
+      {!props.currentMedia.mobileSmall && <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />}
       <div className={layoutClassname}>
         <Masonry>
           {props.photos.map(photo => {
-            return <Photo key={generate()} width={ layout === Layout.Grid ? '479px' : '100%'} photo={photo} />;
+            return (
+              <Photo
+                key={generate()}
+                width={layout === Layout.Grid ? "calc(100vw/3)" : "100%"}
+                photo={photo}
+              />
+            );
           })}
         </Masonry>
       </div>
