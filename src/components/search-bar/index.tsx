@@ -10,6 +10,7 @@ const search_throttle_interval = 500;
 
 interface Props {
   onSearch: (query: string) => void;
+  className?: string;
 }
 
 const placeholder = "Поиск";
@@ -62,7 +63,7 @@ class SearchBar extends React.Component<Props> {
 
     return (
       <input
-        className={cn(style.input, 'heading1')}
+        className={cn(style.input, 'heading1', this.props.className)}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         onChange={this.onChange}

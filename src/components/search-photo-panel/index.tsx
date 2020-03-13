@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { UnsplashApiPhoto } from "../../types/unsplash";
 import { searchPhoto } from "../../api/unsplash";
@@ -6,6 +6,7 @@ import PhotoPanel from "../../components/photo-panel";
 
 interface PhotoState {
   photos: Array<UnsplashApiPhoto>;
+  page: number;
   isLoading: boolean;
 }
 
@@ -14,25 +15,55 @@ interface Props {
 }
 
 const initialPhotoState = {
-  photos: [],
+  photos: new Array<UnsplashApiPhoto>(),
+  page: 1,
   isLoading: false
 };
 
-const SearchPhotoPanel: React.FC<Props> = ({ query }) => {
-  const [photoState, setPhotoState] = useState<PhotoState>(initialPhotoState);
-  useEffect(() => {
-    if (query) {
-      (async (query: string) => {
-        setPhotoState({ isLoading: true, photos: [] });
-        const photos = await searchPhoto(query);
-        setPhotoState({ isLoading: false, photos });
-      })(query);
-    }
-  }, [query]);
+class SearchPhotoPanel extends React.PureComponent<Props, PhotoState> {
+  state = initialPhotoState;
 
-  return (
-    <PhotoPanel photos={photoState.photos} isLoading={photoState.isLoading} />
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.query !== this.props.query) {
+      this.resetPhotos();
+      this.loadImages();
+    }
+  }
+
+  resetPhotos = () => {
+    this.setState(initialPhotoState)
+  }
+
+  loadImages = async () => {
+    if (this.state.isLoading) return;
+
+    const { query } = this.props;
+
+    this.setState(state => ({ ...state, isLoading: true }));
+
+    const result = await searchPhoto({
+      query,
+      page: this.state.page
+    });
+
+
+
+    this.setState(state => ({
+      page: state.page + 1,
+      isLoading: false,
+      photos: [...state.photos, ...result]
+    }), () => {
+
+    });
+  };
+
+  render = () => (
+    <PhotoPanel
+      hasScrolledToBottom={this.loadImages}
+      photos={this.state.photos}
+      isLoading={this.state.isLoading}
+    />
   );
-};
+}
 
 export default SearchPhotoPanel;

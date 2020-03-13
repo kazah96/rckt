@@ -15,10 +15,10 @@ function SearchPage() {
   return (
     <React.Fragment>
       <HeaderPanel>
-        <SearchBar onSearch={setQuery} />
-        <div className={style.dividerContainer}>
-          <Divider />
-        </div>
+          <SearchBar onSearch={setQuery} className={style.searchBar} />
+          <div className={style.dividerContainer}>
+            <Divider />
+          </div>
         <HorizontalWordScroll onWordClick={setQuery} />
       </HeaderPanel>
       <SearchPhotoPanel query={query} />
