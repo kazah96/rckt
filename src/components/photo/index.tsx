@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext } from "react";
+import React, { FC, useContext } from "react";
 import cn from "classnames";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 

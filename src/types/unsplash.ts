@@ -54,18 +54,18 @@ export interface UnsplashApiPhoto {
   created_at: string;
   current_user_collections: Array<any>;
   description?: string;
-  downloads: Number;
-  exif: Object;
-  height: Number;
+  downloads: number;
+  exif: Record<string, any>;
+  height: number;
   id: string;
-  liked_by_user: Boolean;
-  likes: Number;
+  liked_by_user: boolean;
+  likes: number;
   links: Links;
   location?: Location;
   promoted_at: string;
   updated_at: string;
   urls: Urls;
   user: User;
-  views: Number;
-  width: Number;
+  views: number;
+  width: number;
 }

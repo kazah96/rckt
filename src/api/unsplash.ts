@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { api } from "./api";
 import { UnsplashApiPhoto } from "../types/unsplash";
-import querystring from "querystring";
-import config from "../consts/config";
+// import querystring from "querystring";
 
 export async function getRandomPhoto(): Promise<UnsplashApiPhoto> {
   const res = await api.get("/photos/random");
@@ -34,35 +34,35 @@ export const API_VERSION = "v1";
 export const OAUTH_AUTHORIZE_URL = "https://unsplash.com/oauth/authorize";
 export const OAUTH_TOKEN_URL = "https://unsplash.com/oauth/token";
 
-export const getAuthenticationUrl = (scope = ["public"]) => {
-  let querystrings = querystring.stringify({
-    client_id: '6hDy-cTShVF1cCuYgQj8L9QecopJTKFH3kA1N4XPEnw',
-    redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-    response_type: "code",
-    scope: scope.length > 1 ? scope.join("+") : scope.toString()
-  });
+// export const getAuthenticationUrl = (scope = ["public"]) => {
+//   const querystrings = querystring.stringify({
+//     client_id: '6hDy-cTShVF1cCuYgQj8L9QecopJTKFH3kA1N4XPEnw',
+//     redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
+//     response_type: "code",
+//     scope: scope.length > 1 ? scope.join("+") : scope.toString()
+//   });
 
-  return decodeURIComponent(`${OAUTH_AUTHORIZE_URL}?${querystrings}`);
-};
+//   return decodeURIComponent(`${OAUTH_AUTHORIZE_URL}?${querystrings}`);
+// };
 
-export const userAuthentication = (code: string) => {
-  const url = OAUTH_TOKEN_URL;
+// export const userAuthentication = (code: string) => {
+//   const url = OAUTH_TOKEN_URL;
 
-  return api.post(url, {
-    client_id: this._accessKey,
-    client_secret: this._secret,
-    redirect_uri: this._callbackUrl,
-    grant_type: "authorization_code",
-    code
-  });
-};
+//   return api.post(url, {
+//     client_id: this._accessKey,
+//     client_secret: this._secret,
+//     redirect_uri: this._callbackUrl,
+//     grant_type: "authorization_code",
+//     code
+//   });
+// };
 
-export default function auth(): Object {
-  return {
-    setBearerToken: (accessToken: string) => {
-      if (accessToken) {
-        this._bearerToken = accessToken;
-      }
-    }
-  };
-}
+// export default function auth(): Object {
+//   return {
+//     setBearerToken: (accessToken: string) => {
+//       if (accessToken) {
+//         this._bearerToken = accessToken;
+//       }
+//     }
+//   };
+// }

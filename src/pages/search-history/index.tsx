@@ -3,19 +3,19 @@ import cn from "classnames";
 import style from "./style.module.css";
 
 import { UnsplashApiPhoto } from "../../types/unsplash";
-import { searchPhoto } from "../../api/unsplash";
+// import {  } from "../../api/unsplash";
 import PhotoPanel from "../../components/photo-panel";
 import WordList from "../../components/word-list";
 
 import HeaderPanel from "../../atoms/header-panel";
 
 function SearchPage() {
-  const [photos, setPhotos] = useState<Array<UnsplashApiPhoto>>([]);
+  const [photos ] = useState<Array<UnsplashApiPhoto>>([]);
 
-  const searchImages = async (query: string) => {
-    const result = await searchPhoto(query);
-    setPhotos(result);
-  };
+  // const searchImages = async (query: string) => {
+  //   const result = await searchPhoto(query);
+  //   setPhotos(result);
+  // };
 
   return (
     <React.Fragment>
