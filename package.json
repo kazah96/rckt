@@ -11,9 +11,7 @@
     "querystring": "^0.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "shortid": "^2.2.15"
-  },
-  "devDependencies": {
+    "shortid": "^2.2.15",
     "@svgr/webpack": "^5.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
