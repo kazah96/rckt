@@ -1,15 +1,15 @@
 .photoContainer .image {
-  max-width: 476px;
   border-radius: 8px;
   transition: filter ease-in 0.15s;
 }
 
+.image {
+  max-width: 100%
+}
+
 .photoContainer {
-  max-width: 476px;
   margin: 27px;
-  display: inline-block;
   border-radius: 8px;
-  position: relative;
   /* box-shadow: 0px 0px 4px 14px rgba(0, 0, 0, 0.14); */
 }
 
