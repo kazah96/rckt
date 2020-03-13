@@ -87,3 +87,7 @@
   fill: white;
   transform: scale(1.5);
 }
+
+.red svg {
+  fill: red;
+}

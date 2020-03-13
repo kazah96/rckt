@@ -1,22 +1,25 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 
 import style from "./style.module.css";
 
-import { UnsplashApiPhoto } from "../../types/unsplash";
-import { getFavoritePhotos } from "../../api/unsplash";
 import PhotoPanel from "../../components/photo-panel";
+import { PhotoContext } from "../../contexts/photo";
 
 function Favorites() {
-  const [photos, setPhotos] = useState<Array<UnsplashApiPhoto>>([]);
+  const photoContext = useContext(PhotoContext);
 
-  useEffect(() => {
-    (async () => setPhotos(await getFavoritePhotos("poquepoque27")))();
-  }, []);
+  let photos = [];
+
+  photoContext.favoritePhotos.forEach(item => {
+    photos.push(item);
+  });
+
+  console.log(photos)
 
   return (
     <React.Fragment>
       <div className={style.header}>
-        <h1 className='heading2'>Избранное</h1>
+        <h1 className="heading2">Избранное</h1>
       </div>
       <PhotoPanel photos={photos} />
     </React.Fragment>
