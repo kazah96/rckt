@@ -1,14 +1,15 @@
 import React, { FC, useState } from "react";
 import cn from "classnames";
-import generate from 'shortid'
+import generate from "shortid";
 
 import HorizontalIcon from "../../resourse/svg/layout-horizontal.svg";
 import GridIcon from "../../resourse/svg/layout-grid.svg";
+import Masonry from "react-masonry-component";
 
 import style from "./style.module.css";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 
-import Photo from '../photo'
+import Photo from "../photo";
 
 interface IconProps {
   currentSelectedIcon: Layout;
@@ -46,20 +47,20 @@ const LayoutIcons: FC<IconProps> = props => {
 const PhotoPanel: FC<Props> = props => {
   const [layout, setLayout] = useState<Layout>(Layout.Grid);
 
-  const layoutClassname = cn(style.layout,{
+  const layoutClassname = cn(style.layout, {
     [style.layout_horizontal]: layout === Layout.Horizontal,
     [style.layout_grid]: layout === Layout.Grid
   });
-  return (
-    <div className={style.panel}>
-      <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />
 
+  return (
+    <div className={style.panel} >
+      <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />
       <div className={layoutClassname}>
-        {props.photos.map(photo => {
-          return (
-            <Photo key={generate()} photo={photo} />
-          );
-        })}
+        <Masonry>
+          {props.photos.map(photo => {
+            return <Photo key={generate()} width={ layout === Layout.Grid ? '479px' : '100%'} photo={photo} />;
+          })}
+        </Masonry>
       </div>
     </div>
   );

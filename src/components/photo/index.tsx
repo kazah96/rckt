@@ -11,9 +11,10 @@ import { PhotoContext } from "../../contexts/photo";
 
 interface Props {
   photo: UnsplashApiPhoto;
+  width?: string;
 }
 
-const Photo: FC<Props> = ({ photo }) => {
+const Photo: FC<Props> = ({ photo, width }) => {
   const photoContext = useContext(PhotoContext);
   const isPhotoFavorite = photoContext.isPhotoFavorite(photo);
 
@@ -23,7 +24,7 @@ const Photo: FC<Props> = ({ photo }) => {
       : photoContext.addFavoritePhoto(photo);
 
   return (
-    <div className={style.photoContainer}>
+    <div className={style.photoContainer} style={{ width: width ? width : "" }}>
       <img
         className={style.image}
         src={photo.urls.regular}
