@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useContext } from "react";
 import cn from "classnames";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 
@@ -7,12 +7,21 @@ import DownloadIcon from "../../resourse/svg/download.svg";
 import LikeIcon from "../../resourse/svg/like.svg";
 
 import style from "./style.module.css";
+import { PhotoContext } from "../../contexts/photo";
 
 interface Props {
   photo: UnsplashApiPhoto;
 }
 
 const Photo: FC<Props> = ({ photo }) => {
+  const photoContext = useContext(PhotoContext);
+  const isPhotoFavorite = photoContext.isPhotoFavorite(photo);
+
+  const setFavorite = () =>
+    isPhotoFavorite
+      ? photoContext.removeFavoritePhoto(photo)
+      : photoContext.addFavoritePhoto(photo);
+
   return (
     <div className={style.photoContainer}>
       <img
@@ -31,7 +40,10 @@ const Photo: FC<Props> = ({ photo }) => {
         </h2>
         <h4>@{photo.user.instagram_username}</h4>
         <div className={style.buttons}>
-          <div className={style.button}>
+          <div
+            onClick={setFavorite}
+            className={cn(style.button, { [style.red]: isPhotoFavorite } )}
+          >
             <LikeIcon />
           </div>
           <a
