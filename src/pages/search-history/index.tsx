@@ -1,4 +1,4 @@
-import React, { useState, useContext, FC } from "react";
+import React, { useState, useContext, useEffect, FC } from "react";
 import cn from "classnames";
 import style from "./style.module.css";
 
@@ -29,7 +29,15 @@ const Memoized = React.memo(SearchPage);
 
 const SearchPageMemoized: FC = () => {
   const { previousQueries } = useContext(PhotoContext);
-  const [query, setQuery] = useState<string>(previousQueries[0]);
+  const [query, setQuery] = useState<string>("");
+
+  useEffect(() => {
+    setQuery(previousQueries[0]);
+
+    return () => {
+      setQuery("");
+    };
+  }, []);
 
   return <Memoized query={query} setQuery={setQuery} />;
 };
