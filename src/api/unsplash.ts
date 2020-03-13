@@ -17,12 +17,17 @@ export async function getFavoritePhotos(
   return res.data as Array<UnsplashApiPhoto>;
 }
 
+interface PhotoQuery {
+  query: string;
+  page?: number;
+}
+
 export async function searchPhoto(
-  query: string
+  query: PhotoQuery
 ): Promise<Array<UnsplashApiPhoto>> {
   const res = await api.get("/search/photos", {
     params: {
-      query
+      ...query
     }
   });
 

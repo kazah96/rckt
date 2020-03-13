@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import cn from "classnames";
 import generate from "shortid";
 
@@ -10,7 +10,7 @@ import style from "./style.module.css";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 
 import Photo from "../photo";
-import Loader from '../../atoms/loader';
+import Loader from "../../atoms/loader";
 
 interface IconProps {
   currentSelectedIcon: Layout;
@@ -20,6 +20,7 @@ interface IconProps {
 interface Props {
   photos: Array<UnsplashApiPhoto>;
   isLoading?: boolean;
+  hasScrolledToBottom?: () => any;
 }
 
 enum Layout {
@@ -54,13 +55,32 @@ const PhotoPanel: FC<Props> = props => {
     [style.layout_grid]: layout === Layout.Grid
   });
 
+  useEffect(() => {
+    window.onscroll = function() {
+      const d = document.documentElement;
+      const offset = d.scrollTop + window.innerHeight;
+      const height = d.offsetHeight;
+
+      if (offset >= height) {
+        props.hasScrolledToBottom && props.hasScrolledToBottom();
+      }
+    };
+  }, []);
+
   return (
-    <div className={style.panel} >
+
+    <div className={style.panel}>
       <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />
       <div className={layoutClassname}>
         <Masonry>
           {props.photos.map(photo => {
-            return <Photo key={generate()} width={ layout === Layout.Grid ? '479px' : '100%'} photo={photo} />;
+            return (
+              <Photo
+                key={photo.id}
+                width={layout === Layout.Grid ? "479px" : "100%"}
+                photo={photo}
+              />
+            );
           })}
         </Masonry>
       </div>

@@ -2,7 +2,8 @@
   color: var(--main-white);
   width: 80vw;
   overflow: hidden;
-  
+  text-align: center;
+  text-transform: capitalize;
 }
 
 
