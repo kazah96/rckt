@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState } from "react";
 import cn from "classnames";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 
@@ -8,6 +8,7 @@ import LikeIcon from "../../resourse/svg/like.svg";
 
 import style from "./style.module.css";
 import { PhotoContext } from "../../contexts/photo";
+import PhotoModal from "../photo-modal";
 
 interface Props {
   photo: UnsplashApiPhoto;
@@ -17,6 +18,7 @@ interface Props {
 const Photo: FC<Props> = ({ photo, width }) => {
   const photoContext = useContext(PhotoContext);
   const isPhotoFavorite = photoContext.isPhotoFavorite(photo);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const setFavorite = () =>
     isPhotoFavorite
@@ -43,9 +45,12 @@ const Photo: FC<Props> = ({ photo, width }) => {
         <div className={style.buttons}>
           <div
             onClick={setFavorite}
-            className={cn(style.button, { [style.red]: isPhotoFavorite } )}
+            className={cn(style.button, { [style.red]: isPhotoFavorite })}
           >
             <LikeIcon />
+          </div>
+          <div className={style.button} onClick={() => setShowModal(true)}>
+            <MaximizeIcon />
           </div>
           <a
             href={photo.urls.full}
@@ -53,13 +58,13 @@ const Photo: FC<Props> = ({ photo, width }) => {
             rel="noopener noreferrer"
             className={style.button}
           >
-            <MaximizeIcon />
-          </a>
-          <div className={style.button}>
             <DownloadIcon />
-          </div>
+          </a>
         </div>
       </div>
+      {showModal && (
+        <PhotoModal photo={photo} onClick={() => setShowModal(false)} />
+      )}
     </div>
   );
 };

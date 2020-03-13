@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FC } from "react";
 import cn from "classnames";
 import style from "./style.module.css";
 
@@ -7,10 +7,12 @@ import QueryList from "../../components/query-list";
 import SearchPhotoPanel from "../../components/search-photo-panel";
 import { PhotoContext } from "../../contexts/photo";
 
-function SearchPage() {
-  const context = useContext(PhotoContext);
-  const [query, setQuery] = useState<string>(context.previousQueries[0]);
+interface Props {
+  setQuery: (string) => void;
+  query: string;
+}
 
+const SearchPage: FC<Props> = ({ setQuery, query }) => {
   return (
     <React.Fragment>
       <HeaderPanel>
@@ -20,6 +22,16 @@ function SearchPage() {
       <SearchPhotoPanel query={query} />
     </React.Fragment>
   );
-}
+};
 
-export default SearchPage;
+// Против лишних перерендеров
+const Memoized = React.memo(SearchPage);
+
+const SearchPageMemoized: FC = () => {
+  const { previousQueries } = useContext(PhotoContext);
+  const [query, setQuery] = useState<string>(previousQueries[0]);
+
+  return <Memoized query={query} setQuery={setQuery} />;
+};
+
+export default SearchPageMemoized;
