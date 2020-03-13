@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-import { getRandomPhoto } from "../../api/unsplash";
-import { UnsplashApiPhoto } from "../../types/unsplash";
+import SearchPhotoPanel from "../../components/search-photo-panel";
 
-function App() {
-  const [photo, setPhoto] = useState<UnsplashApiPhoto | null>(null);
+const randomWords = ["Sea", "Meme", "Cat"];
 
+function getRandWord() {
+  const rand = Math.floor(Math.random() * (randomWords.length));
+  return randomWords[rand];
+}
+
+function MainPage() {
+  const [query, setQuery] = useState<string>(getRandWord());
 
   useEffect(() => {
-    (async () => {
-      const res = await getRandomPhoto();
-
-      setPhoto(res);
-    })();
+    setQuery(getRandWord());
   }, []);
 
   return (
-    <div className="App">
-      {photo && <img src={photo.urls.full} alt={photo.alt_description} />}
-    </div>
+    <React.Fragment>
+      <SearchPhotoPanel query={query} />
+    </React.Fragment>
   );
 }
 
-export default App;
+export default MainPage;

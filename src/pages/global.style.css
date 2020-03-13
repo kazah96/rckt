@@ -7,6 +7,9 @@ body {
   margin: 0;
   font-family: "SF Display";
 }
+* {
+  transition: all 0.5s ease;
+}
 
 @font-face {
   font-family: "SF Display";

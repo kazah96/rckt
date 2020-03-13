@@ -1,0 +1,17 @@
+.searchPanel {
+  height: 250px;
+  display: flex;
+  background: var(--main-black);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dividerContainer {
+  margin: 20px 0;
+  width: 70vw;
+}
+
+.searchBar {
+  margin-top: 24px;
+}
