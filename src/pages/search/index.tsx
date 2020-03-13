@@ -3,32 +3,25 @@ import SearchBar from "../../components/search-bar";
 
 import style from "./style.module.css";
 
-import { UnsplashApiPhoto } from "../../types/unsplash";
-import { searchPhoto } from "../../api/unsplash";
-import PhotoPanel from "../../components/photo-panel";
 import HorizontalWordScroll from "../../components/horizontal-word-scroll";
 
 import Divider from "../../atoms/divider";
 import HeaderPanel from "../../atoms/header-panel";
+import SearchPhotoPanel from "../../components/search-photo-panel";
 
 function SearchPage() {
-  const [photos, setPhotos] = useState<Array<UnsplashApiPhoto>>([]);
-
-  const searchImages = async (query: string) => {
-    const result = await searchPhoto(query);
-    setPhotos(result);
-  };
+  const [query, setQuery] = useState<string>();
 
   return (
     <React.Fragment>
       <HeaderPanel>
-        <SearchBar onSearch={searchImages} />
+        <SearchBar onSearch={setQuery} />
         <div className={style.dividerContainer}>
           <Divider />
         </div>
-        <HorizontalWordScroll onWordClick={searchImages} />
+        <HorizontalWordScroll onWordClick={setQuery} />
       </HeaderPanel>
-      <PhotoPanel photos={photos} />
+      <SearchPhotoPanel query={query} />
     </React.Fragment>
   );
 }

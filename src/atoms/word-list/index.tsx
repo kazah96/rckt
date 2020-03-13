@@ -5,12 +5,9 @@ import style from "./style.module.css";
 import { PhotoContext } from "../../contexts/photo";
 
 interface Props {
+  words: Array<string>;
   onWordClick?: (word: string) => void;
 }
-
-const q = new Array(50).fill("sewfwefwef").map((item, i) => {
-  return `${item}${i}`;
-});
 
 class HorizontalWordScroll extends React.Component<Props> {
   state = {
@@ -41,6 +38,8 @@ class HorizontalWordScroll extends React.Component<Props> {
   };
 
   render() {
+    const { words, onWordClick } = this.props;
+    
     return (
       <div
         ref={r => (this.containerRef = r)}
@@ -49,9 +48,9 @@ class HorizontalWordScroll extends React.Component<Props> {
         style={{ left: `${this.state.offset}px` }}
       >
         <div>
-          {q.map(query => {
+          {words.map(query => {
             return (
-              <span key={generate()} className={style.word}>
+              <span key={generate()} onClick={() => onWordClick(query)} className={style.word}>
                 {query}
               </span>
             );
