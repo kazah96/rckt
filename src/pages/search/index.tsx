@@ -11,12 +11,29 @@ import HorizontalWordScroll from "../../components/horizontal-word-scroll";
 import Divider from "../../atoms/divider";
 import HeaderPanel from "../../atoms/header-panel";
 
+interface PhotoState {
+  photos: Array<UnsplashApiPhoto>;
+  isLoading: boolean;
+}
+
+const initialPhotoState = {
+  photos: [],
+  isLoading: false
+};
+
 function SearchPage() {
-  const [photos, setPhotos] = useState<Array<UnsplashApiPhoto>>([]);
+  const [photoState, setPhotoState] = useState<PhotoState>(initialPhotoState);
+
+  const setLoading = (loading: boolean) => {
+    const state = { ...photoState };
+    state.isLoading = loading;
+    setPhotoState(state);
+  };
 
   const searchImages = async (query: string) => {
-    const result = await searchPhoto(query);
-    setPhotos(result);
+    setLoading(true);
+    const photos = await searchPhoto(query);
+    setPhotoState({ isLoading: false, photos });
   };
 
   return (
@@ -28,7 +45,7 @@ function SearchPage() {
         </div>
         <HorizontalWordScroll onWordClick={searchImages} />
       </HeaderPanel>
-      <PhotoPanel photos={photos} />
+      <PhotoPanel photos={photoState.photos} isLoading={photoState.isLoading} />
     </React.Fragment>
   );
 }

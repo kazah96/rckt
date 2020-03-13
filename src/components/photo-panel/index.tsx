@@ -10,6 +10,7 @@ import style from "./style.module.css";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 
 import Photo from "../photo";
+import Loader from '../../atoms/loader';
 
 interface IconProps {
   currentSelectedIcon: Layout;
@@ -18,6 +19,7 @@ interface IconProps {
 
 interface Props {
   photos: Array<UnsplashApiPhoto>;
+  isLoading?: boolean;
 }
 
 enum Layout {
@@ -62,6 +64,7 @@ const PhotoPanel: FC<Props> = props => {
           })}
         </Masonry>
       </div>
+      {props.isLoading && <Loader />}
     </div>
   );
 };
