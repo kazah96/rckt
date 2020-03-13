@@ -1,29 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import cn from "classnames";
 import style from "./style.module.css";
 
-import { UnsplashApiPhoto } from "../../types/unsplash";
-// import {  } from "../../api/unsplash";
-import PhotoPanel from "../../components/photo-panel";
-import WordList from "../../components/word-list";
-
 import HeaderPanel from "../../atoms/header-panel";
+import QueryList from "../../components/query-list";
+import SearchPhotoPanel from "../../components/search-photo-panel";
+import { PhotoContext } from "../../contexts/photo";
 
 function SearchPage() {
-  const [photos ] = useState<Array<UnsplashApiPhoto>>([]);
-
-  // const searchImages = async (query: string) => {
-  //   const result = await searchPhoto(query);
-  //   setPhotos(result);
-  // };
+  const context = useContext(PhotoContext);
+  const [query, setQuery] = useState<string>(context.previousQueries[0]);
 
   return (
     <React.Fragment>
       <HeaderPanel>
         <h2 className={cn(style.heading, "heading2")}>Ваши запросы</h2>
-        <WordList />
+        <QueryList onWordClick={setQuery} />
       </HeaderPanel>
-      <PhotoPanel photos={photos} />
+      <SearchPhotoPanel query={query} />
     </React.Fragment>
   );
 }
