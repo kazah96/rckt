@@ -49,7 +49,7 @@ class HorizontalWordScroll extends React.Component<Props> {
         style={{ left: `${this.state.offset}px` }}
       >
         <div>
-          {q.map((query) => {
+          {q.map(query => {
             return (
               <span key={generate()} className={style.word}>
                 {query}

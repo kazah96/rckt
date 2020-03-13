@@ -1,6 +1,5 @@
-
 const formatLevel = "off";
-const qualityLevel = 'error';
+const qualityLevel = "error";
 
 module.exports = {
   // Настройки проекта
@@ -14,10 +13,10 @@ module.exports = {
   },
   // Наборы правил
   extends: [
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jest/style',
-    'plugin:jest/recommended',
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/style",
+    "plugin:jest/recommended"
   ],
   // Движок парсинга
   parser: "@typescript-eslint/parser",
@@ -25,6 +24,14 @@ module.exports = {
     // Движку нужен проект TS для правил с типами
     project: "tsconfig.json",
     tsconfigRootDir: "."
+  },
+  settings: {
+    react: {
+      createClass: "createReactClass", // Regex for Component Factory to use,
+      // default to "createReactClass"
+      pragma: "React", // Pragma to use, default to "React"
+      version: "detect" // React v
+    }
   },
   // Плагин с наборами правил для TypeScript
   // plugins: [
@@ -59,7 +66,7 @@ module.exports = {
     "react/jsx-no-target-blank": "warn",
     "react/no-find-dom-node": "off",
     "react/display-name": "off",
-  
+
     // tests stuff
     "jest/no-export": "off",
     // autofixible 'format' rules
