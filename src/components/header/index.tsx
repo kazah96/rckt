@@ -7,9 +7,9 @@ import HistoryIcon from "../../resourse/svg/history.svg";
 
 import style from "./style.module.css";
 
-interface Props {}
+// interface Props {}
 
-const Header: FC<Props> = props => {
+const Header: FC = () => {
 
   return (
     <div className={style.header}>

@@ -14,8 +14,6 @@ function Favorites() {
     photos.push(item);
   });
 
-  console.log(photos)
-
   return (
     <React.Fragment>
       <div className={style.header}>

@@ -29,7 +29,6 @@ class HorizontalWordScroll extends React.Component<Props> {
     const cont = this.containerRef;
 
     const center = cont.clientWidth / 2;
-    console.log(center);
 
     let offset = this.state.offset + delta;
 
@@ -42,9 +41,6 @@ class HorizontalWordScroll extends React.Component<Props> {
   };
 
   render() {
-    const photoContext = this.context;
-    const { onWordClick } = this.props;
-
     return (
       <div
         ref={r => (this.containerRef = r)}
@@ -53,7 +49,7 @@ class HorizontalWordScroll extends React.Component<Props> {
         style={{ left: `${this.state.offset}px` }}
       >
         <div>
-          {q.map((query, i) => {
+          {q.map(query => {
             return (
               <span key={generate()} className={style.word}>
                 {query}

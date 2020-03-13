@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useContext, useCallback } from "react";
+import React from "react";
 import cn from 'classnames'
 
 //@ts-ignore
@@ -6,8 +6,6 @@ import throttle from "lodash/throttle";
 
 import style from "./style.module.css";
 import { PhotoContext } from "../../contexts/photo";
-import HorizontalWordScroll from "../horizontal-word-scroll";
-
 const search_throttle_interval = 500;
 
 interface Props {

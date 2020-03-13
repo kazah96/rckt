@@ -2,7 +2,8 @@ import { createContext } from "react";
 import React from "react";
 import { UnsplashApiPhoto } from "../types/unsplash";
 
-const noop = () => {};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
 
 interface PhotoContextState {
   previousQueries: Array<string>;
@@ -34,6 +35,7 @@ const PhotoContext = createContext<PhotoContextProps>(defaultProps);
 class PhotoContextWrapper extends React.PureComponent {
   state: PhotoContextState = defaultState;
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   addQuery = (query: string) => {
     const prevQueries = [...this.state.previousQueries];
     prevQueries.push(query);
@@ -41,7 +43,7 @@ class PhotoContextWrapper extends React.PureComponent {
     this.setState({ previousQueries: prevQueries });
   };
 
-  addFavoritePhoto = (photo: UnsplashApiPhoto) => {
+  addFavoritePhoto = (photo: UnsplashApiPhoto): void => {
     const favoritePhotos = new Map(this.state.favoritePhotos);
 
     favoritePhotos.set(photo.id, photo);
@@ -49,7 +51,7 @@ class PhotoContextWrapper extends React.PureComponent {
     this.setState({ favoritePhotos });
   };
 
-  removeFavoritePhoto = (photo: UnsplashApiPhoto) => {
+  removeFavoritePhoto = (photo: UnsplashApiPhoto): void  => {
     const favoritePhotos = new Map(this.state.favoritePhotos);
 
     favoritePhotos.delete(photo.id);
@@ -57,7 +59,7 @@ class PhotoContextWrapper extends React.PureComponent {
     this.setState({ favoritePhotos });
   };
 
-  isPhotoFavorite = (photo: UnsplashApiPhoto) => {
+  isPhotoFavorite = (photo: UnsplashApiPhoto): boolean  => {
     return this.state.favoritePhotos.has(photo.id);
   };
 

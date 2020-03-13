@@ -1,3 +1,6 @@
+// @ts-nocheck
+// eslint-ignore 
+
 import React from "react";
 import { generate } from "shortid";
 
@@ -13,12 +16,12 @@ interface Props {
 //   return 1/Math.pow(currentValue, 2);
 // }
 
-const maxSpeed = 10;
+// const maxSpeed = 10;
 
-function bound(number, max, min) {
-  if (number > max) return max;
-  if (number < min) return min;
-}
+// function bound(number, max, min) {
+//   if (number > max) return max;
+//   if (number < min) return min;
+// }
 
 class Smooth {
   currentPosition = 0;
@@ -36,7 +39,6 @@ class Smooth {
 
       window.requestAnimationFrame(this.animate);
 
-      console.log("cursped", this.currentSpeed);
       return;
     }
 
@@ -51,8 +53,6 @@ class Smooth {
 
       return;
     }
-
-    console.log('animate')
 
     if (!this.start) this.start = timestamp;
 
