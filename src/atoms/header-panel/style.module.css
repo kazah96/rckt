@@ -4,6 +4,7 @@
   background: var(--main-black);
   flex-direction: column;
   align-items: center;
+  transition: height 0.3s ease;
 }
 
 
@@ -11,4 +12,8 @@
   .panel {
     height: 120px;
   }
+}
+
+.hide {
+  height: 0;
 }

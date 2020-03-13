@@ -4,6 +4,7 @@
   text-align: center;
   color: var(--main-white);
   width: 60vw;
+  outline: none;
 }
 
 .input::-webkit-input-placeholder {

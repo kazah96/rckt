@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
 import cn from "classnames";
-import generate from "shortid";
 
 import HorizontalIcon from "../../resourse/svg/layout-horizontal.svg";
 import GridIcon from "../../resourse/svg/layout-grid.svg";
