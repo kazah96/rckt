@@ -20,7 +20,6 @@ const initialPhotoState = {
 
 const SearchPhotoPanel: React.FC<Props> = ({ query }) => {
   const [photoState, setPhotoState] = useState<PhotoState>(initialPhotoState);
-
   useEffect(() => {
     if (query) {
       (async (query: string) => {

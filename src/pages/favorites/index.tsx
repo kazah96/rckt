@@ -1,19 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, FC } from "react";
 
 import style from "./style.module.css";
 
 import PhotoPanel from "../../components/photo-panel";
 import { PhotoContext } from "../../contexts/photo";
+import { UnsplashApiPhoto } from "../../types/unsplash";
 
-function Favorites() {
-  const photoContext = useContext(PhotoContext);
+interface Props {
+  photos: Array<UnsplashApiPhoto>;
+}
 
-  let photos = [];
-
-  photoContext.favoritePhotos.forEach(item => {
-    photos.push(item);
-  });
-
+const FavoritesPage: FC<Props> = ({ photos }) => {
   return (
     <React.Fragment>
       <div className={style.header}>
@@ -22,6 +19,20 @@ function Favorites() {
       <PhotoPanel photos={photos} />
     </React.Fragment>
   );
-}
+};
 
-export default Favorites;
+const Memoized = React.memo(FavoritesPage);
+
+const FavoritesPageMemoized: FC = () => {
+  const photoContext = useContext(PhotoContext);
+
+  let photos = [];
+
+  photoContext.favoritePhotos.forEach(item => {
+    photos.push(item);
+  });
+
+  return <Memoized photos={photos} />;
+};
+
+export default FavoritesPageMemoized;
