@@ -1,16 +1,17 @@
-.photoContainer .image {
+.image {
   border-radius: 8px;
   transition: filter ease-in 0.15s;
-}
-
-.image {
-  max-width: 100%
+  width: 100%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
 .photoContainer {
-  margin: 27px;
+  width: auto;
   border-radius: 8px;
-  /* box-shadow: 0px 0px 4px 14px rgba(0, 0, 0, 0.14); */
+  position: relative;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.14);
 }
 
 .photoContainer:hover .image {
@@ -56,7 +57,6 @@
   margin-bottom: 60px;
 }
 
-
 .buttons {
   top: 50px;
   top: 50%;
@@ -90,4 +90,14 @@
 
 .red svg {
   fill: red;
+}
+
+@media screen and (max-width: 600px) {
+  .photoContainer .image  {
+    border-radius: 0;
+  }
+
+  .photoContainer {
+    margin: 0;
+  }
 }
