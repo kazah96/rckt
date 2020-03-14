@@ -1,8 +1,7 @@
-.dividerContainer {
-  margin: 20px 0;
-  width: 70vw;
-}
-
 .heading {
   color: white;
+}
+
+.wordList {
+  margin-top: 36px;
 }

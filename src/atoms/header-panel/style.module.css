@@ -5,12 +5,14 @@
   flex-direction: column;
   align-items: center;
   transition: height 0.3s ease;
+  padding-top: 24px;
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .panel {
     height: 120px;
+    padding-top: 0px;
   }
 }
 

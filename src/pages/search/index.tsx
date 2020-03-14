@@ -21,7 +21,7 @@ function SearchPage() {
   return (
     <React.Fragment>
       <HeaderPanel>
-        <SearchBar onSearch={setQuery} className={style.searchBar} />
+        <SearchBar onSearch={setQuery} />
         <div className={style.dividerContainer}>
           <Divider />
         </div>

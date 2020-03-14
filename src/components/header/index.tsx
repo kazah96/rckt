@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import Link from "next/link";
+// import Link from "next/link";
+import Link from "../active-link";
 import cn from "classnames";
 
 import SearchIcon from "../../resourse/svg/search.svg";
@@ -19,19 +20,19 @@ const Header: FC = () => {
         <Face />
       </div>
       <div className={style.rightBar}>
-        <Link href="/search">
+        <Link activeClassName={style.activeLink} href="/search">
           <a className={style.link}>
             <SearchIcon />
             <span>Поиск</span>
           </a>
         </Link>
-        <Link href="/favorites">
+        <Link activeClassName={style.activeLink} href="/favorites">
           <a className={style.link}>
             <LikeIcon />
             <span>Избранное</span>
           </a>
         </Link>
-        <Link href="/search-history">
+        <Link activeClassName={style.activeLink} href="/search-history">
           <a className={style.link}>
             <HistoryIcon />
             <span>История поиска</span>
