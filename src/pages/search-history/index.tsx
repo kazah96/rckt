@@ -16,8 +16,10 @@ const SearchPage: FC<Props> = ({ setQuery, query }) => {
   return (
     <React.Fragment>
       <HeaderPanel>
-        <h2 className={cn(style.heading, "heading2")}>Ваши запросы</h2>
-        <QueryList onWordClick={setQuery} />
+        <h2 className={cn(style.heading, "heading1")}>Ваши запросы</h2>
+        <div className={style.wordList}>
+          <QueryList onWordClick={setQuery} />
+        </div>
       </HeaderPanel>
       <SearchPhotoPanel query={query} />
     </React.Fragment>
@@ -32,7 +34,9 @@ const SearchPageMemoized: FC = () => {
   const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
-    setQuery(previousQueries[0]);
+    if (previousQueries.length > 0) {
+      setQuery(previousQueries[0]);
+    }
 
     return () => {
       setQuery("");

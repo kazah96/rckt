@@ -12,10 +12,10 @@ import PhotoModal from "../photo-modal";
 
 interface Props {
   photo: UnsplashApiPhoto;
-  width?: string;
+  span?: number;
 }
 
-const Photo: FC<Props> = ({ photo, width }) => {
+const Photo: FC<Props> = ({ photo, span }) => {
   const photoContext = useContext(PhotoContext);
   const isPhotoFavorite = photoContext.isPhotoFavorite(photo);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -26,7 +26,10 @@ const Photo: FC<Props> = ({ photo, width }) => {
       : photoContext.addFavoritePhoto(photo);
 
   return (
-    <div className={style.photoContainer} style={{ width: width ? width : "" }}>
+    <div
+      className={style.photoContainer}
+      style={{ gridRowEnd: `span ${span}` }}
+    >
       <img
         className={style.image}
         src={photo.urls.regular}
