@@ -3,6 +3,8 @@ import React from "react";
 import { UnsplashApiPhoto } from "../../types/unsplash";
 import { searchPhoto } from "../../api/unsplash";
 import PhotoPanel from "../../components/photo-panel";
+import { pushNotification } from "../notifications";
+import { MessageType } from "../notifications/types";
 
 interface PhotoState {
   photos: Array<UnsplashApiPhoto>;
@@ -31,8 +33,8 @@ class SearchPhotoPanel extends React.PureComponent<Props, PhotoState> {
   }
 
   resetPhotos = () => {
-    this.setState(initialPhotoState)
-  }
+    this.setState(initialPhotoState);
+  };
 
   loadImages = async () => {
     if (this.state.isLoading) return;
@@ -41,20 +43,30 @@ class SearchPhotoPanel extends React.PureComponent<Props, PhotoState> {
 
     this.setState(state => ({ ...state, isLoading: true }));
 
-    const result = await searchPhoto({
-      query,
-      page: this.state.page
-    });
+    try {
+      const result = await searchPhoto({
+        query,
+        page: this.state.page
+      });
 
-
-
-    this.setState(state => ({
-      page: state.page + 1,
-      isLoading: false,
-      photos: [...state.photos, ...result]
-    }), () => {
-
-    });
+      this.setState(state => ({
+        page: state.page + 1,
+        isLoading: false,
+        photos: [...state.photos, ...result]
+      }));
+    } catch (e) {
+      pushNotification(
+        <>
+          <p>{e.message}</p>
+          <p>Maybe server is overloaded?</p>
+        </>,
+        MessageType.Error,
+        5000
+      );
+      this.setState(() => ({
+        isLoading: false
+      }));
+    }
   };
 
   render = () => (

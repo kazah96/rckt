@@ -15,13 +15,13 @@ export async function getRandomPhoto(): Promise<UnsplashApiPhoto> {
 export async function searchPhoto(
   query: PhotoQuery
 ): Promise<Array<UnsplashApiPhoto>> {
-  const res = await api.get("/search/photos", {
+  let res;
+
+  res = await api.get("/search/photos", {
     params: {
       ...query
     }
   });
-
-  debugger;
 
   return res.data.results as Array<UnsplashApiPhoto>;
 }

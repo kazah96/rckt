@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 
 import { BaseContextProvider } from "../contexts/baseContextProvider";
 import Header from "../components/header";
+import Notifications from '../components/notifications'
 
 import "./global.style.css";
 
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </BaseContextProvider>
       </div>
+      <Notifications />
     </React.Fragment>
   );
 }

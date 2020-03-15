@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-// import Link from "next/link";
 import Link from "../active-link";
 import cn from "classnames";
 
