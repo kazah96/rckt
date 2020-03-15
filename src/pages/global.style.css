@@ -1,4 +1,8 @@
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
   --main-black: #000000;
@@ -8,9 +12,17 @@
 body {
   margin: 0;
   font-family: "SF Display";
+  background: var(--main-white);
+  animation: 0.2s ease-out 0s 1 opac;
 }
-* {
-  transition: all 0.5s ease;
+
+@keyframes opac {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @font-face {

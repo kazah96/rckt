@@ -1,5 +1,5 @@
 import React from "react";
-import cn from 'classnames'
+import cn from "classnames";
 
 //@ts-ignore
 import throttle from "lodash/throttle";
@@ -11,6 +11,7 @@ const search_throttle_interval = 500;
 interface Props {
   onSearch: (query: string) => void;
   className?: string;
+  query?: string;
 }
 
 const placeholder = "Поиск";
@@ -23,8 +24,24 @@ class SearchBar extends React.Component<Props> {
 
   static contextType = PhotoContext;
 
+  private inputRef;
+
   componentDidMount() {
+    if (this.props.query) {
+      this.setState({ value: this.props.query });
+    }
+
     document.addEventListener("keypress", this.handleUserKeyPress);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.query !== prevProps.query) {
+      if(this.inputRef) {
+        this.inputRef.focus()
+      }
+
+      this.setState({ value: this.props.query });
+    }
   }
 
   componentWillUnmount() {
@@ -61,7 +78,9 @@ class SearchBar extends React.Component<Props> {
 
     return (
       <input
-        className={cn(style.input, 'heading1', this.props.className)}
+        ref={input => (this.inputRef = input)}
+        autoFocus
+        className={cn(style.input, "heading1", this.props.className)}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         onChange={this.onChange}

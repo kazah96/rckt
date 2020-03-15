@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, ReactNode } from "react";
 import cn from "classnames";
 
 import HorizontalIcon from "../../resourse/svg/layout-horizontal.svg";
@@ -21,6 +21,7 @@ interface Props {
   photos: Array<UnsplashApiPhoto>;
   isLoading?: boolean;
   hasScrolledToBottom?: () => any;
+  showNoResultsMessage?: string | ReactNode;
 }
 
 enum Layout {
@@ -72,20 +73,26 @@ const PhotoPanel: FC<Props> = props => {
   return (
     <div className={style.panel}>
       <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />
-      <Masonry
-        className={style.grid}
-        isHorizontal={layout === Layout.Horizontal}
-      >
-        {props.photos.map(photo => {
-          return (
-            <Photo
-              span={getSpan(photo.width, photo.height)}
-              key={photo.id}
-              photo={photo}
-            />
-          );
-        })}
-      </Masonry>
+      {props.photos.length > 0 ? (
+        <Masonry
+          className={style.grid}
+          isHorizontal={layout === Layout.Horizontal}
+        >
+          {props.photos.map(photo => {
+            return (
+              <Photo
+                span={getSpan(photo.width, photo.height)}
+                key={photo.id}
+                photo={photo}
+              />
+            );
+          })}
+        </Masonry>
+      ) : (
+        props.showNoResultsMessage && (
+          <div className={style.nophoto}>{props.showNoResultsMessage}</div>
+        )
+      )}
       {props.isLoading && <Loader />}
     </div>
   );

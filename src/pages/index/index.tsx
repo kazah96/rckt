@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import SearchPhotoPanel from "../../components/search-photo-panel";
-
-const randomWords = ["Sea", "Meme", "Cat"];
-
-function getRandWord() {
-  const rand = Math.floor(Math.random() * (randomWords.length));
-  return randomWords[rand];
-}
+import getRandWord from '../../utils/randWord'
 
 function MainPage() {
   const [query, setQuery] = useState<string>(getRandWord());

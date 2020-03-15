@@ -34,7 +34,9 @@ const SearchPageMemoized: FC = () => {
   const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
-    setQuery(previousQueries[0]);
+    if (previousQueries.length > 0) {
+      setQuery(previousQueries[0]);
+    }
 
     return () => {
       setQuery("");
