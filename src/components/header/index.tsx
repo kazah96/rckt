@@ -9,13 +9,10 @@ import HistoryIcon from "../../resourse/svg/history.svg";
 import Face from "./face";
 
 import style from "./style.module.css";
-import useScrollDirection from "../../hooks/scroll-direction";
 
 const Header: FC = () => {
-  const sticky = useScrollDirection();
-
   return (
-    <div className={cn(style.header, { [style.headerSticky]: sticky })}>
+    <div className={cn(style.header)}>
       <div className={style.faceContainer}>
         <Face />
       </div>

@@ -26,7 +26,10 @@ const Photo: FC<Props> = ({ photo, span }) => {
       : photoContext.addFavoritePhoto(photo);
 
   return (
-    <div className={style.photoContainer} style={{gridRowEnd: `span ${span}`}}>
+    <div
+      className={style.photoContainer}
+      style={{ gridRowEnd: `span ${span}` }}
+    >
       <img
         className={style.image}
         src={photo.urls.regular}

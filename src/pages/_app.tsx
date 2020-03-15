@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Helmet>
+        <html lang = "en"/>
         <meta charSet="utf-8" />
         <title>Rocket app</title>
         <link rel="canonical" href="https://krmngz-rckt.herokuapp.com" />

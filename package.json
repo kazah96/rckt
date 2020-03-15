@@ -33,7 +33,7 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "dev": "next src",
+    "dev": "next src --port 3005",
     "build": "next build src",
     "start": "next start src -p $PORT",
     "check:all": "eslint src/**/*.{tsx,ts,js}"

@@ -49,8 +49,6 @@ class SearchBar extends React.Component<Props> {
     const { onSearch } = this.props;
 
     if (e.key === "Enter" && value !== "") {
-      // console.log(photoContext)
-
       onSearch(value);
       addQuery(value);
 

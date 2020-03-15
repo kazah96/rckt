@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import cn from "classnames";
 
 import HorizontalIcon from "../../resourse/svg/layout-horizontal.svg";
@@ -10,6 +10,7 @@ import { UnsplashApiPhoto } from "../../types/unsplash";
 
 import Photo from "../photo";
 import Loader from "../../atoms/loader";
+import useScrollDirection from "../../hooks/scroll-direction";
 
 interface IconProps {
   currentSelectedIcon: Layout;
@@ -65,32 +66,26 @@ const LayoutIcons: FC<IconProps> = props => {
 const PhotoPanel: FC<Props> = props => {
   const [layout, setLayout] = useState<Layout>(Layout.Grid);
 
-  useEffect(() => {
-    window.onscroll = function() {
-      const d = document.documentElement;
-      const offset = d.scrollTop + window.innerHeight;
-      const height = d.offsetHeight;
-
-      if (offset >= height) {
-        props.hasScrolledToBottom && props.hasScrolledToBottom();
-      }
-    };
-  }, []);
+  const scroll = useScrollDirection();
+  if (scroll?.hasReachedBottom) props.hasScrolledToBottom();
 
   return (
     <div className={style.panel}>
       <LayoutIcons currentSelectedIcon={layout} onClick={setLayout} />
-        <Masonry className={style.grid} isHorizontal={layout === Layout.Horizontal}>
-          {props.photos.map(photo => {
-            return (
-              <Photo
-                span={getSpan(photo.width, photo.height)}
-                key={photo.id}
-                photo={photo}
-              />
-            );
-          })}
-        </Masonry>
+      <Masonry
+        className={style.grid}
+        isHorizontal={layout === Layout.Horizontal}
+      >
+        {props.photos.map(photo => {
+          return (
+            <Photo
+              span={getSpan(photo.width, photo.height)}
+              key={photo.id}
+              photo={photo}
+            />
+          );
+        })}
+      </Masonry>
       {props.isLoading && <Loader />}
     </div>
   );

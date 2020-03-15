@@ -22,9 +22,7 @@ function SearchPage() {
     <React.Fragment>
       <HeaderPanel>
         <SearchBar onSearch={setQuery} />
-        <div className={style.dividerContainer}>
-          <Divider />
-        </div>
+        <Divider className={style.dividerContainer} />
         <HorizontalWordScroll onWordClick={setQuery} />
       </HeaderPanel>
       <SearchPhotoPanel query={query} />
