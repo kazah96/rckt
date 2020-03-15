@@ -1,6 +1,9 @@
 ![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
 
-# RCKT is photostock app written on react + typescript + next.js
+# RCKT is photostock app written on react + typescript + next.js + unsplash api
+
+### Is it crossbrowser enough? 
+Not yet. There are known bugs with ios browsers
 
 ### Watch here: https://krmngz-rckt.herokuapp.com/
 
