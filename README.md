@@ -41,7 +41,7 @@ yarn dev
 *NOICE*
 
 
-Connect the author:
+Contact the author:
 
 Telegram: [@poquepoque27](https://t.me/poquepoque27)
 Mail: poquepoque27@gmail.com
