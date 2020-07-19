@@ -23,7 +23,7 @@
     "eslint-plugin-node": "11.0.0",
     "eslint-plugin-react": "7.19.0",
     "jest": "^25.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "next": "^9.3.0",
     "querystring": "^0.2.0",
     "react": "^16.13.0",
